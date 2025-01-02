@@ -9,7 +9,9 @@ const recordModel = sequelize.define('recordModel', {
         autoIncrement: true
     },
     totalHours: DataTypes.FLOAT,
-    date: DataTypes.DATE
+    date: DataTypes.DATE,
+    state:DataTypes.INTEGER,
+    day:DataTypes.INTEGER,
 }, {
     tableName: 'records',
     timestamps: false

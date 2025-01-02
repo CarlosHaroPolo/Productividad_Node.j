@@ -2,25 +2,27 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
 
-const ProductividadRA = sequelize.define('ProductividadRA', {
+const r_aModel = sequelize.define('r_aModel', {
     idRecord: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'ProductividadRecords', // Nombre del modelo vinculado
+            model: 'records', // Nombre del modelo vinculado
             key: 'id'
-        }
+        },
+        primaryKey: true
     },
     idActivity: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'ProductividadActivities', // Nombre del modelo vinculado
+            model: 'activities', // Nombre del modelo vinculado
             key: 'id'
-        }
+        },
+        primaryKey: true
     },
-    hour: DataTypes.TIME
+    hour: DataTypes.TIME    
 }, {
     tableName: 'r_a',
     timestamps: false
 });
 
-module.exports = ProductividadRA;
+module.exports = r_aModel;

@@ -1,22 +1,22 @@
-const ProductividadRecord = require('./recordModel');
-const ProductividadRA = require('./r_aModel');
+const recordModel = require('./recordModel');
+const r_aModel = require('./r_aModel');
 const activityModel = require('./activityModel');
 const typeModel = require('./typeModel');
 
 // Relaciones
 activityModel.belongsTo(typeModel, { foreignKey: 'idType', as: 'fk_type' });
 
+recordModel.hasMany(r_aModel, { foreignKey: 'idRecord' , as: 'fk_record'});
 
 
 typeModel.hasMany(activityModel, { foreignKey: 'idType' });
-ProductividadRA.belongsTo(ProductividadRecord, { foreignKey: 'idRecord' });
-ProductividadRA.belongsTo(activityModel, { foreignKey: 'idActivity' });
-ProductividadRecord.hasMany(ProductividadRA, { foreignKey: 'idRecord' });
-activityModel.hasMany(ProductividadRA, { foreignKey: 'idActivity' });
+r_aModel.belongsTo(recordModel, { foreignKey: 'idRecord' , as: 'fk_record' });
+r_aModel.belongsTo(activityModel, { foreignKey: 'idActivity', as: 'fk_activity'  });
+activityModel.hasMany(r_aModel, { foreignKey: 'idActivity' });
 
 module.exports = {
-    ProductividadRecord,
-    ProductividadRA,
+    recordModel,
+    r_aModel,
     activityModel,
     typeModel
 };

@@ -1,87 +1,73 @@
-const { ProductividadType } = require('../model/relaciones');
+const { recordModel } = require('../model/relaciones');
 
-// Obtener todos los registros
-const getAllTypes = async (req, res) => {
+// crear record
+async function createRecord(req, res) {
+    const { data } = req.body;  // Asume que 'data' contiene todos los campos necesarios para crear un record
     try {
-        const types = await ProductividadType.findAll(); // Trae todos los registros
-        res.json(types);
+        const newRecord = await recordModel.create(data);
+        res.status(201).send(newRecord);
     } catch (error) {
-        console.error('Error al obtener los tipos:', error);
-        res.status(500).json({ error: 'Error al obtener los datos' });
+        res.status(400).send(error.message);
     }
-};
-
-// Obtener un registro por ID
-const getTypeById = async (req, res) => {
+}
+// mostrar todo los record: 
+async function getAllRecords(req, res) {
     try {
-        const { id } = req.params;
-        const type = await ProductividadType.findByPk(id); // Busca por clave primaria
-
-        if (type) {
-            res.json(type);
+        const records = await recordModel.findAll();
+        res.status(200).send(records);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+// mostrar con id 
+async function getRecordById(req, res) {
+    const { id } = req.params;
+    try {
+        const record = await recordModel.findByPk(id);
+        if (record) {
+            res.status(200).send(record);
         } else {
-            res.status(404).json({ error: 'Tipo no encontrado' });
+            res.status(404).send("Record not found");
         }
     } catch (error) {
-        console.error('Error al obtener el tipo:', error);
-        res.status(500).json({ error: 'Error al obtener el dato' });
+        res.status(500).send(error.message);
     }
-};
+}
 
-// Crear un nuevo registro
-const createType = async (req, res) => {
+//actualizar 
+async function updateRecord(req, res) {
+    const { id } = req.params;
+    const { data } = req.body;
     try {
-        const { name, description } = req.body;
-        const newType = await ProductividadType.create({ name, description }); // Crea un nuevo registro
-        res.status(201).json(newType);
-    } catch (error) {
-        console.error('Error al crear el tipo:', error);
-        res.status(500).json({ error: 'Error al crear el dato' });
-    }
-};
-
-// Actualizar un registro existente
-const updateType = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { name, description } = req.body;
-
-        const type = await ProductividadType.findByPk(id);
-
-        if (type) {
-            await type.update({ name, description }); // Actualiza el registro
-            res.json(type);
+        const [updated] = await recordModel.update(data, { where: { id: id } });
+        if (updated) {
+            const updatedRecord = await recordModel.findByPk(id);
+            res.status(200).send(updatedRecord);
         } else {
-            res.status(404).json({ error: 'Tipo no encontrado' });
+            res.status(404).send("Record not found");
         }
     } catch (error) {
-        console.error('Error al actualizar el tipo:', error);
-        res.status(500).json({ error: 'Error al actualizar el dato' });
+        res.status(500).send(error.message);
     }
-};
-
-// Eliminar un registro
-const deleteType = async (req, res) => {
+}
+//dalate:
+async function deleteRecord(req, res) {
+    const { id } = req.params;
     try {
-        const { id } = req.params;
-        const type = await ProductividadType.findByPk(id);
-
-        if (type) {
-            await type.destroy(); // Elimina el registro
-            res.json({ message: 'Tipo eliminado correctamente' });
+        const deleted = await recordModel.destroy({ where: { id: id } });
+        if (deleted) {
+            res.status(204).send("Record deleted");
         } else {
-            res.status(404).json({ error: 'Tipo no encontrado' });
+            res.status(404).send("Record not found");
         }
     } catch (error) {
-        console.error('Error al eliminar el tipo:', error);
-        res.status(500).json({ error: 'Error al eliminar el dato' });
+        res.status(500).send(error.message);
     }
-};
-
+}
 module.exports = {
-    getAllTypes,
-    getTypeById,
-    createType,
-    updateType,
-    deleteType
+    createRecord,
+    getAllRecords,
+    getRecordById,
+    updateRecord,
+    deleteRecord
 };
