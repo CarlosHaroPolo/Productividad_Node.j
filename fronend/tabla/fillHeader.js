@@ -33,8 +33,11 @@ function modificarTable(tr, th, fecha) {
     try {
         if (data[i + flag]) {
             currentWeek[e - 1].id = data[i + flag].id;
+            currentWeek[e-1].day=data[i + flag].date;
+
         } else {
             currentWeek[e-1].id = null;
+            currentWeek[e-1].day=null;
         }
     } catch (e) {
         // Captura cualquier otro error y lo maneja
@@ -47,6 +50,10 @@ async function fillHeader() {
 
     let i=data.length-1 ;
     let last = data[i];
+   // actualizar mostrar el date  
+   console.log(last.date);
+   cambiarFecha(mostrarFecha(last.date,0),last.id);
+
     //last.day=1 es lunes y last.day7 es domingo 
    
     // mi idea es idententiifcar el dia luego colocar la fehca y tener guardadlo el id para que luego en el r_a pueda ver a queier pertenece tu pédes carlos 
@@ -60,5 +67,5 @@ async function fillHeader() {
 }
 
 // Llamamos a la función para obtener los datos
-fillHeader();
+//fillHeader();
 // Llamada para modificar el primer <th> (de la primera fila, primera columna) en la tabla
