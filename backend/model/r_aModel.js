@@ -3,13 +3,18 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../database');
 
 const r_aModel = sequelize.define('r_aModel', {
+
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     idRecord: {
         type: DataTypes.INTEGER,
         references: {
             model: 'records', // Nombre del modelo vinculado
             key: 'id'
         },
-        primaryKey: true
     },
     idActivity: {
         type: DataTypes.INTEGER,
@@ -17,7 +22,6 @@ const r_aModel = sequelize.define('r_aModel', {
             model: 'activities', // Nombre del modelo vinculado
             key: 'id'
         },
-        primaryKey: true
     },
     hour: DataTypes.TIME    
 }, {

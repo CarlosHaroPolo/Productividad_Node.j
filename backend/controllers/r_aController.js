@@ -21,7 +21,7 @@ async function getAllRAs(req, res) {
             include: [{
                 model: recordModel,
                 as: 'fk_record', 
-                attributes: ['date','state'] 
+                attributes: ['totalHours','state'] 
             },
         {
             model: activityModel,

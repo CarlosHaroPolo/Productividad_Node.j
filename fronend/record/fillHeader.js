@@ -1,58 +1,5 @@
 // aca te vas a encargar de llenar 
-class day {
-    constructor(day, date) {
-        this.day = day;
-        this.date = date;
-    }
-}
 
-
-let currentWeek = [
-    {
-        "id": 0,
-        "day": "LUNES"
-    },
-    {
-        "id": 0,
-        "day": "MARTES"
-    },
-    {
-        "id": 0,
-        "day": "MIÉRCOLES"
-    },
-    {
-        "id": 0,
-        "day": "JUEVES"
-    },
-    {
-        "id": 0,
-        "day": "VIERNES"
-    },
-    {
-        "id": 0,
-        "day": "SÁBADO"
-    },
-    {
-        "id": 0,
-        "day": "DOMINGO"
-    },
-]
-
-//hora ver preguntar por todo los record consumiendo la api get 
-async function obtenerDatos() {
-    try {
-        let response = await fetch('http://127.0.0.1:3000/api/record');
-
-        if (!response.ok) {
-            throw new Error('Error en la solicitud');
-        }
-
-        let data = await response.json();
-        return data; // Aquí devolvemos los datos recolectados
-    } catch (error) {
-        console.log('Hubo un error: ', error);
-    }
-}
 
 
 function modificarTable(tr, th, fecha) {
@@ -87,7 +34,6 @@ function modificarTable(tr, th, fecha) {
         if (data[i + flag]) {
             currentWeek[e - 1].id = data[i + flag].id;
         } else {
-            console.log(`No se encontró el índice i+flag: ${i + flag}`);
             currentWeek[e-1].id = null;
         }
     } catch (e) {
@@ -96,9 +42,9 @@ function modificarTable(tr, th, fecha) {
     }
 }
 // Llamamos a la función y usamos await para obtener el resultado
-async function obtenerYUsarDatos() {
-    let data = await obtenerDatos(); // Aquí se obtiene la información de la API
-   console.log(data);
+async function fillHeader() {
+    let data = await obtenerDatos('http://127.0.0.1:3000/api/record'); // Aquí se obtiene la información de la API
+
     let i=data.length-1 ;
     let last = data[i];
     //last.day=1 es lunes y last.day7 es domingo 
@@ -114,5 +60,5 @@ async function obtenerYUsarDatos() {
 }
 
 // Llamamos a la función para obtener los datos
-obtenerYUsarDatos();
+fillHeader();
 // Llamada para modificar el primer <th> (de la primera fila, primera columna) en la tabla
