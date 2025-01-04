@@ -11,4 +11,7 @@ function actualizarTabla(){
     fillHeader();
     // llenar el resto 
     obtenerYUsarDatos();
+
+   
+
 }

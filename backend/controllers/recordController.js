@@ -39,17 +39,23 @@ async function updateRecord(req, res) {
     const { id } = req.params;
     const { data } = req.body;
     try {
-        const [updated] = await recordModel.update(data, { where: { id: id } });
-        if (updated) {
-            const updatedRecord = await recordModel.findByPk(id);
-            res.status(200).send(updatedRecord);
+        const [updated] = await recordModel.update(data, { where: { id: id } }); // Intentar actualizar el registro
+        if (updated) { // Si se actualizó al menos un registro
+            const updatedRecord = await recordModel.findByPk(id); // Recuperar el registro actualizado
+            if (updatedRecord) {
+                res.status(200).send(updatedRecord); // Enviar el registro actualizado
+            } else {
+                res.status(404).send('Record not found after update'); // Manejo de caso donde el registro no se encuentra después de actualizar
+            }
         } else {
-            res.status(404).send("Record not found");
+            res.status(404).send("Record not found"); // Si no se encontró el registro para actualizar
         }
     } catch (error) {
         res.status(500).send(error.message);
     }
 }
+
+
 //dalate:
 async function deleteRecord(req, res) {
     const { id } = req.params;
