@@ -3,37 +3,49 @@ let currentWeek = [
     {
         "id": 0,
         "day": "LUNES",
-        "totalHora":0
+        "totalHora":0,
+        "ActivityArray":[]
     },
     {
         "id": 0,
         "day": "MARTES",
-        "totalHora":0
+        "totalHora":0,
+        "ActivityArray":[]
     },
     {
         "id": 0,
         "day": "MIÉRCOLES",   
-         "totalHora":0
+         "totalHora":0,
+         "ActivityArray":[]
+
     },
     {
         "id": 0,
         "day": "JUEVES",   
-         "totalHora":0
+         "totalHora":0,
+         "ActivityArray":[]
+
     },
     {
         "id": 0,
         "day": "VIERNES",   
-         "totalHora":0
+         "totalHora":0,
+         "ActivityArray":[]
+
     },
     {
         "id": 0,
         "day": "SÁBADO",
-        "totalHora":0
+        "totalHora":0,
+        "ActivityArray":[]
+
     },
     {
         "id": 0,
         "day": "DOMINGO",
-        "totalHora":0
+        "totalHora":0,
+        "ActivityArray":[]
+
     },
 ]
 

@@ -81,7 +81,12 @@ function crearFilaTotales(horasTotales) {
         let semana = [];
         for (let index = 0; index < 7; index++) {
             semana.push(llenarColumna(data, index));
+            currentWeek[index].ActivityArray.push(llenarColumna(data, index));
+            // ademas quiero llenar el de curren 
         }
+        console.log("current");
+
+        console.log(currentWeek);
 
        fillFila(semana,maxActivity(data));
        
