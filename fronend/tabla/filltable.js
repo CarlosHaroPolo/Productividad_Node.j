@@ -37,6 +37,8 @@ function fillFila(semana, maxFila) {
 }
 
 function crearFilaActividades(semana, horasTotales, filaIndex) {
+   
+
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
         let hora = 0;
@@ -92,3 +94,6 @@ function crearFilaTotales(horasTotales) {
 
     //obtenerYUsarDatos();
 
+/*
+  
+*/

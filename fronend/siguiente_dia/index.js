@@ -36,12 +36,21 @@
 
 let buttonSiguiente = document.querySelector(".buttonSiguiente");
 
+
+
 buttonSiguiente.addEventListener('click', function() {
     console.log("Botón siguiente ha sido clickeado!");
 
 
     //FALTA ACTUALIZAR LA FECHA OJITO !!!
-        siguienteRecord();
+    siguienteRecord()
+    .then(() => {
+        actualizarTabla();  // Se ejecuta después de que siguienteRecord se complete
+    })
+    .catch(error => {
+        console.error('Error durante siguienteRecord:', error);
+    });
+
         console.log("Botón siguiente ha sido clickeado!");
 
  
