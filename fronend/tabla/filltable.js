@@ -29,15 +29,15 @@ function fillFila(semana, maxFila) {
     }
     // Añadir la fila de totales a la tabla
     const filaTotales = crearFilaTotales(horasTotales);
-     // actualizar la informacion de currentWeek
-     for (let index = 0; index < 7; index++) {
-       currentWeek[index].totalHora=horasTotales[index];
-     }
+    // actualizar la informacion de currentWeek
+    for (let index = 0; index < 7; index++) {
+        currentWeek[index].totalHora = horasTotales[index];
+    }
     tabla.appendChild(filaTotales);
 }
 
 function crearFilaActividades(semana, horasTotales, filaIndex) {
-   
+
 
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
@@ -69,35 +69,46 @@ function crearFilaTotales(horasTotales) {
     }
     return fila;
 }
-    function llenarColumna(data, index) {
-        if (currentWeek[index].id != null) {
-            return data.filter(item => item.idRecord == currentWeek[index].id)
-        }
-        return undefined;
+function llenarColumna(data, index) {
+    if (currentWeek[index].id != null) {
+        return data.filter(item => item.idRecord == currentWeek[index].id)
     }
+    return undefined;
+}
 
-    async function obtenerYUsarDatos() {
-        let data = await obtenerDatos('http://localhost:3000/api/ra/'); // Aquí se obtiene la información de la API
-        let semana = [];
-        for (let index = 0; index < 7; index++) {
-            semana.push(llenarColumna(data, index));
-            currentWeek[index].ActivityArray.push(llenarColumna(data, index));
-            // ademas quiero llenar el de curren 
+async function obtenerYUsarDatos() {
+    let data = await obtenerDatos('http://localhost:3000/api/ra/'); // Aquí se obtiene la información de la API
+    let semana = [];
+    for (let index = 0; index < 7; index++) {
+
+        // este para llenar el arreglo de avtiivdades por dia 
+        let datosActividadxDia = llenarColumna(data, index);
+        if (datosActividadxDia != undefined) {
+            for (let i = 0; i < datosActividadxDia.length; i++) {
+                currentWeek[index].ActivityArray.push(datosActividadxDia[i]);
+            }
         }
-        console.log("current");
+        //---------------------------------------------------------------------
 
-        console.log(currentWeek);
 
-       fillFila(semana,maxActivity(data));
-       
 
+        semana.push(llenarColumna(data, index));  //este es parte de la primera 
+        // ademas quiero llenar el de curren 
     }
+    console.log("current");
+
+    console.log(currentWeek);
+
+    fillFila(semana, maxActivity(data));
+
+
+}
 
 
 
-//-----seleccionar la tabla 
+//-----seleccionar la tabla
 
-    //obtenerYUsarDatos();
+//obtenerYUsarDatos();
 
 /*
   
