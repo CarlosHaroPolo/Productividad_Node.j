@@ -1,53 +1,46 @@
+class Day {
+    constructor(id, day) {
+        this.id = id;
+        this.day = day;
+        this.totalHora = 0;
+        this.activityArray = [];
+    }
 
-let currentWeek = [
-    {
-        "id": 0,
-        "day": "LUNES",
-        "totalHora":0,
-        "ActivityArray":[]
-    },
-    {
-        "id": 0,
-        "day": "MARTES",
-        "totalHora":0,
-        "ActivityArray":[]
-    },
-    {
-        "id": 0,
-        "day": "MIÉRCOLES",   
-         "totalHora":0,
-         "ActivityArray":[]
+    setId(newId) {
+        this.id = newId;
+    }
+    setDay(newDay) {
+        this.day = newDay;
+    }
+    setTotalHora(newTotalHora) {
+        this.totalHora = newTotalHora;
+    }
+    setActivityArray(newActivityArray) {
+        this.activityArray = newActivityArray;
+    }
+    // Método para agregar una actividad
+    addActivity(activity) {
+        this.activityArray.push(activity);
+    }
 
-    },
-    {
-        "id": 0,
-        "day": "JUEVES",   
-         "totalHora":0,
-         "ActivityArray":[]
 
-    },
-    {
-        "id": 0,
-        "day": "VIERNES",   
-         "totalHora":0,
-         "ActivityArray":[]
+}
+class Week {
+    constructor() {
+        this.days = [
+            new Day(0, "LUNES"),
+            new Day(0, "MARTES"),
+            new Day(0, "MIÉRCOLES"),
+            new Day(0, "JUEVES"),
+            new Day(0, "VIERNES"),
+            new Day(0, "SÁBADO"),
+            new Day(0, "DOMINGO")
+        ];
+    }
+}
+//inicializar mi currentWeek
+let currentWeek = new Week();
 
-    },
-    {
-        "id": 0,
-        "day": "SÁBADO",
-        "totalHora":0,
-        "ActivityArray":[]
-
-    },
-    {
-        "id": 0,
-        "day": "DOMINGO",
-        "totalHora":0,
-        "ActivityArray":[]
-
-    },
-]
 
 // funcion que sirve para consumir un get
 
@@ -88,23 +81,23 @@ async function registrarDatos(URL, data) {
 
 // para colocar la fecha actual 
 
-function cambiarFecha(fecha){
+function cambiarFecha(fecha) {
 
     let fch = document.querySelector(".fechaActual");
-    fch.textContent=fecha;
+    fch.textContent = fecha;
 }
 
- //convertir a la hora que a estring al formato DIA/MES/AÑO
- function  mostrarFecha(fch,agregardia) {
-    let fecha = new Date(fch); 
+//convertir a la hora que a estring al formato DIA/MES/AÑO
+function mostrarFecha(fch, agregardia) {
+    let fecha = new Date(fch);
     fecha.setDate(fecha.getDate() + agregardia); // Sumar un día
     let dia = fecha.getUTCDate();
-    let mes = fecha.getUTCMonth() + 1; 
+    let mes = fecha.getUTCMonth() + 1;
     let año = fecha.getUTCFullYear();
     if (dia < 10) dia = '0' + dia;
     if (mes < 10) mes = '0' + mes;
     return `${dia}/${mes}/${año}`;
-  }
+}
 
 
 // Datos que quieres enviar en el POST request
@@ -132,25 +125,25 @@ registrarDatos('http://localhost:3000/api/record/', xxx); */
 async function ActualizarDato(URL, id, data) {
     const endpoint = `${URL}${id}`;
     const options = {
-      method: 'PUT', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ data: data })  // Encapsulamos los datos en una propiedad 'data'
-        };
-  
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ data: data })  // Encapsulamos los datos en una propiedad 'data'
+    };
+
     try {
-      const response = await fetch(endpoint, options);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json(); // o response.text() si la respuesta no es JSON
-      console.log('Success:', result);
+        const response = await fetch(endpoint, options);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json(); // o response.text() si la respuesta no es JSON
+        console.log('Success:', result);
     } catch (error) {
-      console.error('Error:', error.message);
+        console.error('Error:', error.message);
     }
-  }
-  
-  //ActualizarDato('http://localhost:3000/api/record/', '1', { "totalHours": 99 });
+}
+
+//ActualizarDato('http://localhost:3000/api/record/', '1', { "totalHours": 99 });
 
 

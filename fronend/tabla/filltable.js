@@ -1,16 +1,11 @@
-
-
-
-
 function contarActivity(data, id) {
     return data.filter(item => item.idRecord == id).length;
 }
-
 function maxActivity(data) {
     let arreglo = [];
     for (let index = 0; index < 7; index++) {
-        if (currentWeek[index].id > 0) {
-            id = currentWeek[index].id;
+        if (currentWeek.days[index].id > 0) {
+            id = currentWeek.days[index].id;
             arreglo.push(contarActivity(data, id));
         } else {
             arreglo.push(0);
@@ -18,27 +13,20 @@ function maxActivity(data) {
     }
     return Math.max(...arreglo);
 }
-
 function fillFila(semana, maxFila) {
     const tabla = document.querySelector('.t2 tbody');
     let horasTotales = new Array(7).fill(0);
-    // Construir las filas con actividades y horas
     for (let i = 0; i < maxFila; i++) {
         const fila = crearFilaActividades(semana, horasTotales, i);
         tabla.appendChild(fila);
     }
-    // Añadir la fila de totales a la tabla
     const filaTotales = crearFilaTotales(horasTotales);
-    // actualizar la informacion de currentWeek
-    for (let index = 0; index < 7; index++) {
-        currentWeek[index].totalHora = horasTotales[index];
-    }
+    horasTotales.forEach((total, index) => {
+        currentWeek.days[index].setTotalHora(total);
+    });
     tabla.appendChild(filaTotales);
 }
-
 function crearFilaActividades(semana, horasTotales, filaIndex) {
-
-
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
         let hora = 0;
@@ -53,14 +41,12 @@ function crearFilaActividades(semana, horasTotales, filaIndex) {
     }
     return fila;
 }
-
 function appendCelda(fila, contenido, clase) {
     const celda = document.createElement('td');
     celda.textContent = contenido;
     celda.classList.add(clase);
     fila.appendChild(celda);
 }
-
 function crearFilaTotales(horasTotales) {
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
@@ -70,46 +56,33 @@ function crearFilaTotales(horasTotales) {
     return fila;
 }
 function llenarColumna(data, index) {
-    if (currentWeek[index].id != null) {
-        return data.filter(item => item.idRecord == currentWeek[index].id)
+    if (currentWeek.days[index].id != null) {
+        return data.filter(item => item.idRecord == currentWeek.days[index].id)
     }
     return undefined;
 }
-
 async function obtenerYUsarDatos() {
     let data = await obtenerDatos('http://localhost:3000/api/ra/'); // Aquí se obtiene la información de la API
-    let semana = [];
+    let semana = [];// aca se guardar arreglos ose 7 que acada uno por dia 
     for (let index = 0; index < 7; index++) {
-
-        // este para llenar el arreglo de avtiivdades por dia 
-        let datosActividadxDia = llenarColumna(data, index);
-        if (datosActividadxDia != undefined) {
-            for (let i = 0; i < datosActividadxDia.length; i++) {
-                currentWeek[index].ActivityArray.push(datosActividadxDia[i]);
+        semana.push(llenarColumna(data, index));
+        if (semana[index] != undefined) {
+            for (let i = 0; i < semana[index].length; i++) {
+                currentWeek.days[index].addActivity(semana[index][i]);
             }
         }
-        //---------------------------------------------------------------------
-
-
-
-        semana.push(llenarColumna(data, index));  //este es parte de la primera 
-        // ademas quiero llenar el de curren 
     }
-    console.log("current");
-
-    console.log(currentWeek);
-
     fillFila(semana, maxActivity(data));
-
-
 }
 
+function clearTable() {
+    var tbody = document.querySelector('.t2 tbody'); //IMPORTANTE 
+    var filas = tbody.querySelectorAll('tr');
+    for (var i = filas.length - 1; i > 0; i--) {
 
-
-//-----seleccionar la tabla
-
-//obtenerYUsarDatos();
-
-/*
-  
-*/
+        filas[i].remove();
+    }
+    [...filas].reverse().forEach((fila, index) => {
+        if (index > 0) fila.remove(); // Evitamos el primer elemento del arreglo original
+    });
+}

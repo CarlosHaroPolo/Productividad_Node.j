@@ -22,9 +22,6 @@
         fecha.setDate(fecha.getDate() + 1);
         fecha = fecha.toISOString().split('T')[0];
         fecha=fecha.toString();
-
-
-    
         id = id < 6 ? id + 1 : 0;
         console.log(fecha+'/'+id)
         
