@@ -22,7 +22,9 @@ class Day {
     addActivity(activity) {
         this.activityArray.push(activity);
     }
-
+    getActivityArray() {
+        return this.activityArray;
+    }
 
 }
 class Week {
@@ -79,7 +81,14 @@ async function registrarDatos(URL, data) {
     }
 }
 
-// para colocar la fecha actual 
+function idDiaActualCurrentWeek(){
+    for (let index = 6; index >= 0; index--) {
+        if (currentWeek.days[index].id != null) {
+            return index;
+        }
+    }
+
+}
 
 function cambiarFecha(fecha) {
 
@@ -98,29 +107,6 @@ function mostrarFecha(fch, agregardia) {
     if (mes < 10) mes = '0' + mes;
     return `${dia}/${mes}/${año}`;
 }
-
-
-// Datos que quieres enviar en el POST request
-// EJEMPLO DE COMO UTILIZAR EL CREATE:
-
-/* const xxx  = {
-    "totalHours": 8,
-    "date": "2025-11-8",
-    "state": 0,
-    "day": 4
-};
-console.log('Datos enviados:', xxx);
-
-// Llamamos a la función para registrar los datos
-registrarDatos('http://localhost:3000/api/record/', xxx); */
-
-
-// ACTUALIZAR LA TABLA :
-//router.put('/:id', recordController.updateRecord);
-
-// Dato que deseas actualizar
-
-
 
 async function ActualizarDato(URL, id, data) {
     const endpoint = `${URL}${id}`;
