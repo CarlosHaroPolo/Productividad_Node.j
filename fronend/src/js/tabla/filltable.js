@@ -31,13 +31,25 @@ function crearFilaActividades(semana, horasTotales, filaIndex) {
     for (let dia = 0; dia < 7; dia++) {
         let hora = 0;
         let activity = '';
-        if (semana[dia] && semana[dia][filaIndex]) {
-            activity = semana[dia][filaIndex].fk_activity.activity;
-            hora = parseInt(semana[dia][filaIndex].hour, 10);
-            horasTotales[dia] += hora;
-        }
-        appendCelda(fila, hora, "currentActivity");
-        appendCelda(fila, activity, "currentActivity");
+        let idDiaHoy = idDiaActualCurrentWeek(); // quiero preguntar por id del dia de hoy del current
+
+      
+            if (semana[dia] && semana[dia][filaIndex]) {
+                activity = semana[dia][filaIndex].fk_activity.activity;
+                hora = parseInt(semana[dia][filaIndex].hour, 10);
+                horasTotales[dia] += hora;
+            }
+            if(dia == idDiaHoy){
+                console.log("ERES ESPECIAL");
+                appendCelda(fila, hora, "currentActivity");
+                appendCeldEspecial(fila,activity);
+              }else{
+                appendCelda(fila, hora, "currentActivity");
+                appendCelda(fila, activity, "currentActivity");
+              }
+
+            
+
     }
     return fila;
 }
@@ -47,6 +59,16 @@ function appendCelda(fila, contenido, clase) {
     celda.classList.add(clase);
     fila.appendChild(celda);
 }
+
+//ACA SOLO TE ENCARGAS DE LA PARTE ESPECIAL PARA COLOCAR EL NUMERO UN INPUY ademas del texto agregar un  buttron 
+function appendCeldEspecial(fila,contenido) {
+    const celda = document.createElement('td');
+    celda.innerHTML = '<p>' + contenido + '</p><button type="button" class="btnEditarActivity btn btn-dark">editar</button>';
+    ///  quiero ingresar pero del p textconte =contenido
+    fila.appendChild(celda);
+}
+
+
 function crearFilaTotales(horasTotales) {
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
@@ -73,6 +95,7 @@ async function obtenerYUsarDatos() {
         }
     }
     fillFila(semana, maxActivity(data));
+    console.log(semana);
 }
 
 function clearTable() {

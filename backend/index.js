@@ -22,6 +22,10 @@ app.use('/api/activities', activityRoutes);
 app.use('/api/record', recordRoutes);
 app.use('/api/ra', r_aRoute);
 
+
+// agregar los recursos estaticos 
+app.use(express.static('public'));
+
 // Iniciar el servidor
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
