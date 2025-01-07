@@ -13,7 +13,7 @@ async function activityGet() {
         return 0;
     });
     datas.forEach(data => {
-        agregarSelect("selectACtivity", data.id, data.activity);
+        agregarSelect("selectActivity", data.id, data.activity);
 
     });
 }
@@ -25,12 +25,12 @@ activityGet();
 
 //-----------------------------------------------------------------------------------------------
 // el button para registrar 
-let registrarACtividad = document.querySelector(".registrarACtividad");
-registrarACtividad.addEventListener('click',  function () {
+let registrarActividad = document.querySelector(".registrarActividad");
+registrarActividad.addEventListener('click',  function () {
 
     let idActivity = 0;
     let activityHours = 0;
-    const selectElement = document.querySelector(".selectACtivity");
+    const selectElement = document.querySelector(".selectActivity");
     const inputHours = document.querySelector(".HoursActivity");
     idActivity = parseInt(selectElement.value);
     activityHours = parseFloat(inputHours.value);
@@ -44,6 +44,9 @@ registrarACtividad.addEventListener('click',  function () {
         .then(response => {
             console.log("REGISTRADO!!");
             console.log(response); // Optional: Log the response from the server
+            //limpiar 
+            inputHours.value=0;
+            selectElement.value=1;
             actualizarTabla();
         })
         .catch(error => {

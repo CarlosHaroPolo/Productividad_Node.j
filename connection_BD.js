@@ -14,5 +14,4 @@ connection.connect(error => {
   if (error) {
     return console.error('Error al conectar: ' + error.message);
   }
-  console.log('Conectado a la base de datos MySQL');
 });

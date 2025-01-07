@@ -82,7 +82,5 @@ function clearTable() {
 
         filas[i].remove();
     }
-    [...filas].reverse().forEach((fila, index) => {
-        if (index > 0) fila.remove(); // Evitamos el primer elemento del arreglo original
-    });
+
 }

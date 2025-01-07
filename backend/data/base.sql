@@ -53,3 +53,5 @@ INSERT INTO types (type, description) VALUES
 ('ORGANIZACIÓN Y MEJORA DEL HOGAR', 'Tareas domésticas destinadas a mantener y mejorar el ambiente del hogar.'),
 ('TESIS', 'Trabajo de investigación que puede incluir desarrollo teórico.'),
 ('DESARROLLO PERSONAL', 'Acciones encaminadas a mejorar las oportunidades laborales y profesional.');
+
+INSERT INTO records(totalHours, date, state, day) VALUES ( '0', '2024-12-31', '0', '0');
