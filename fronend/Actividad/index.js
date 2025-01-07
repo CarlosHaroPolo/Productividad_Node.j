@@ -18,13 +18,7 @@ async function activityGet() {
     });
 }
 
-function agregarSelect(clase, id, value) {
-    const select = document.querySelector(`.${clase}`);
-    let elementoOpcion = document.createElement('option');
-    elementoOpcion.value = id;
-    elementoOpcion.textContent = value;
-    select.appendChild(elementoOpcion);
-}
+
 
 //ejecuta código 
 activityGet();

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,10 +121,11 @@
         </div>
         <div class="card col-4">
             <div>
-                <h3>La Fecha ACtual: <p class="fechaActual">02/01/2025</p></h3>
+                <h3>La Fecha ACtual: <p class="fechaActual">02/01/2025</p>
+                </h3>
 
-          
-             
+
+
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Siguiente Dia...
@@ -143,51 +142,92 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>Antes de finalizar el día, recuerda agregar las actividades realizadas hoy para que no se pierdan.</p>
+                                <p>Antes de finalizar el día, recuerda agregar las actividades realizadas hoy para que
+                                    no se pierdan.</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="buttonSiguiente btn btn-primary" data-bs-dismiss="modal" >Siguiente...</button>
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="buttonSiguiente btn btn-primary"
+                                    data-bs-dismiss="modal">Siguiente...</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                       <!-- DOS button -->
-                <button type="button"class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                <!-- DOS button -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     Registrar Actividad
                 </button>
-                 <!--  DOS Modal -->
-                 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                 <div class="modal-dialog">
-                     <div class="modal-content">
-                         <div class="modal-header">
-                             <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar la actividad del 02/01/2025</h1>
-                             <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                 aria-label="Close"></button>
-                         </div>
-                         <div class="modal-body">
-                            <!--necesito que seleccion la activiad -->
-                            <div>
-                                <label for="">Actividad:</label>
-                                <select class="selectACtivity form-select" aria-label="Default select example">
-                                    <option selected>Selecciona  </option>
-                                  </select>
+                <!--  DOS Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar la actividad para el dia
+                                    de hoy</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                            <div>
-                                <label for="">Cantidad Horas:</label>
-                           
-                                <input type="number" class="HoursActivity form-control" value="0" placeholder="Horas" aria-label="Username" aria-describedby="basic-addon1" min="0">
+                            <div class="modal-body">
+                                <!--necesito que seleccion la activiad -->
+                                <div>
+                                    <label for="">Actividad:</label>
+                                    <select class="selectACtivity form-select" aria-label="Default select example">
+                                        <option selected>Selecciona </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="">Cantidad Horas:</label>
 
+                                    <input type="number" class="HoursActivity form-control" value="0"
+                                        placeholder="Horas" aria-label="Username" aria-describedby="basic-addon1"
+                                        min="0">
+
+                                </div>
                             </div>
-                         </div>
-                         <div class="modal-footer">
-                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                             <button type="button" class="registrarACtividad btn btn-primary">Guardar</button>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="registrarACtividad btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--tercer button-->
+
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal3">Crea Nueva Actividad</button>
+
+
+                <!--tercer modal-->
+                <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                  Crear Nueva Actividad </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!--necesito que seleccion la activiad -->
+                                <label for="">Tipo:</label>
+                                <select class="selectType form-select" aria-label="Default select example">
+                                    <option selected>Selecciona </option>
+                                </select>
+                                <label for="">Actividad:</label>
+                                <input type="text" class="nuevaActividad form-control" value="">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="crearNuevoActividad btn btn-primary"  data-bs-dismiss="modal">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -208,6 +248,8 @@
 
 <script src="fronend/Actividad/index.js"></script>
 
+
+<script src="fronend/Crear_Nueva_actividad/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>

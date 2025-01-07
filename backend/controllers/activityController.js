@@ -36,14 +36,17 @@ exports.getActivityById = async (req, res) => {
     }
 };
 
+
+
 // Crear una nueva actividad
 exports.createActivity = async (req, res) => {
+    const { data } = req.body;  // Asume que 'data' contiene todos los campos necesarios
     try {
-        const newActivity = await activityModel.create(req.body);
-        res.status(201).json(newActivity);
+        const newActivity = await activityModel.create(data);
+        res.status(201).send(newActivity);
     } catch (error) {
-        res.status(500).send(error.message);
-    }
+        res.status(400).send(error.message);
+    }  
 };
 
 // Actualizar una actividad existente

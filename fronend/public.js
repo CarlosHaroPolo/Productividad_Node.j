@@ -107,6 +107,14 @@ function mostrarFecha(fch, agregardia) {
     if (mes < 10) mes = '0' + mes;
     return `${dia}/${mes}/${año}`;
 }
+function agregarSelect(clase, id, value) {
+    const select = document.querySelector(`.${clase}`);
+    let elementoOpcion = document.createElement('option');
+    elementoOpcion.value = id;
+    elementoOpcion.textContent = value;
+    select.appendChild(elementoOpcion);
+}
+
 
 async function ActualizarDato(URL, id, data) {
     const endpoint = `${URL}${id}`;
