@@ -7,11 +7,14 @@
   
   <!-- TailwindCSS compilado -->
   <link href="./dist/css/output.css" rel="stylesheet" />
+  <!--librerira-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
 <body class="bg-gray-100 text-gray-800">
-
   <!-- Contenedor principal -->
-  <div class="max-w-7xl mx-auto py-6 px-2 sm:px-3 lg:px-4"> <!-- Modifica aquí el px-4, sm:px-6 y lg:px-8 a valores menores -->
+  <div class="max-w-full mx-auto py-8 px-4 sm:px-6 lg:px-8">
+      <!-- Modifica aquí el px-4, sm:px-6 y lg:px-8 a valores menores -->
 
     <!-- Grid responsive:
          - En pantallas chicas: 1 columna
@@ -241,6 +244,9 @@
   <script src="src/js/Actividad/index.js"></script>
   <script src="src/js/Crear_Nueva_actividad/index.js"></script>
 
+  <!--libreria -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
   <!-- Funciones para abrir/cerrar modales -->
   <script>
     function openModal(modalId) {
@@ -250,6 +256,18 @@
       document.getElementById(modalId).classList.add('hidden');
     }
   </script>
-
+<!-- <script>
+  // Cuando el contenido de la página esté completamente cargado
+  window.onload = function() {
+    Toastify({
+      text: "HOLA MRD",
+      duration: 3000, // Tiempo en pantalla
+      close: true, // Muestra un botón para cerrar el toast
+      gravity: "top", // Puede ser 'top' o 'bottom'
+      position: 'center', // Puede ser 'left', 'center', o 'right'
+      backgroundColor: "red"      // Estilo de color
+    }).showToast();
+  };
+</script> -->
 </body>
 </html>

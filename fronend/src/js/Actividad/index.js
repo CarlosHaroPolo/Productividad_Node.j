@@ -48,6 +48,8 @@ registrarActividad.addEventListener('click',  function () {
             inputHours.value=0;
             selectElement.value=1;
             actualizarTabla();
+            crearNotificacion("La actividad se guardó correctamente para el día de hoy.", "#7d3c98", "#ffffff");
+
         })
         .catch(error => {
             console.error("Error al registrar datos:", error);

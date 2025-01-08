@@ -47,9 +47,6 @@ function crearFilaActividades(semana, horasTotales, filaIndex) {
                 appendCelda(fila, hora, "currentActivity");
                 appendCelda(fila, activity, "currentActivity");
               }
-
-            
-
     }
     return fila;
 }
@@ -63,7 +60,7 @@ function appendCelda(fila, contenido, clase) {
 //ACA SOLO TE ENCARGAS DE LA PARTE ESPECIAL PARA COLOCAR EL NUMERO UN INPUY ademas del texto agregar un  buttron 
 function appendCeldEspecial(fila,contenido) {
     const celda = document.createElement('td');
-    celda.innerHTML = '<p>' + contenido + '</p><button type="button" class="btnEditarActivity btn btn-dark">editar</button>';
+    celda.innerHTML = `<p>${contenido}  <button type="button" class="btnEditarActivity btn btn-dark">editar</button></p>`
     ///  quiero ingresar pero del p textconte =contenido
     fila.appendChild(celda);
 }
@@ -72,8 +69,8 @@ function appendCeldEspecial(fila,contenido) {
 function crearFilaTotales(horasTotales) {
     const fila = document.createElement('tr');
     for (let dia = 0; dia < 7; dia++) {
-        appendCelda(fila, horasTotales[dia], "currentActivity");
-        appendCelda(fila, 'TOTAL', "currentActivity");
+        appendCelda(fila, horasTotales[dia], "trColumnaTotal");
+        appendCelda(fila, 'TOTAL', "trColumnaTotal");
     }
     return fila;
 }

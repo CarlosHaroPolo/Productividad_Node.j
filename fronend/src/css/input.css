@@ -12,20 +12,34 @@
   @apply inline-block px-4 py-2 rounded-md font-semibold text-center transition-colors;
 }
 
+
+
 .btn-primary {
   @apply bg-blue-600 hover:bg-blue-700 text-white;
 }
 
 .btn-secondary {
-  @apply bg-gray-400 hover:bg-gray-500 text-white;
+  @apply bg-gray-400 hover:bg-gray-500 text-black;
 }
 
 .btn-danger {
-  @apply bg-red-600 hover:bg-red-700 text-white;
+  @apply bg-[#7d3c98] hover:bg-[#6a2f88] text-white;
 }
 
+/* styles.css */
+/* styles.css */
+/* styles.css */
+.btn-dark {
+  @apply bg-gray-800 text-white font-semibold px-1 py-1 border border-gray-700 rounded text-xs; /* Sin padding y tamaño de texto extra pequeño */
+  transition: background-color 0.3s;
+}
+
+.btn-dark:hover {
+  @apply bg-gray-700;
+}
+/*......... */
 .btn-warning {
-  @apply bg-yellow-400 hover:bg-yellow-500 text-white;
+  @apply bg-[#28b463] hover:bg-[#1e8449] text-white;
 }
 
 /* Tabla */
@@ -41,7 +55,9 @@
 .table-custom thead tr {
   @apply bg-blue-600 text-white;
 }
-
+.trColumnaTotal {
+  @apply bg-blue-600 text-white;
+}
 .table-custom tbody tr:nth-child(even) {
   @apply bg-gray-50;
 }

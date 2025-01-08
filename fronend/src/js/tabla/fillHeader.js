@@ -1,6 +1,6 @@
-function modificarTable(tr, th, fecha) {
-    th=th+1;
-    const celda = document.querySelector(`.t2 tbody tr:nth-child(${tr}) th:nth-child(${th})`);
+function modificarTable(tr, td, fecha) {
+    td=td+1;
+    const celda = document.querySelector(`.t2 tbody tr:nth-child(${tr}) td:nth-child(${td})`);
     celda ?  celda.textContent = fecha : console.error("No se pudo encontrar la celda.");   
 }
   function actualizarIdCurrentWeek(data, i, e, flag) {

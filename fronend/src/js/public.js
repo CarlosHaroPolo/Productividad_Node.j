@@ -44,7 +44,6 @@ class Week {
 let currentWeek = new Week();
 
 
-// funcion que sirve para consumir un get
 
 async function obtenerDatos(URL) {
     try {
@@ -137,7 +136,16 @@ async function ActualizarDato(URL, id, data) {
         console.error('Error:', error.message);
     }
 }
-
-//ActualizarDato('http://localhost:3000/api/record/', '1', { "totalHours": 99 });
+function crearNotificacion(contenido,backgroundColor,textColor){
+    Toastify({
+        text: contenido,
+        duration: 3000, // Tiempo en pantalla
+        close: true, // Muestra un botón para cerrar el toast
+        gravity: "top", // Puede ser 'top' o 'bottom'
+        position: 'center', // Puede ser 'left', 'center', o 'right'
+        backgroundColor: backgroundColor, // Estilo de color del fondo
+        textColor: textColor // Estilo de color del texto
+      }).showToast();
+}
 
 

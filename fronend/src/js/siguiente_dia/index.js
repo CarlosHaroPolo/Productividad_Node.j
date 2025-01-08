@@ -22,6 +22,9 @@ buttonSiguiente.addEventListener('click', function() {
     siguienteRecord()
     .then(() => {
         actualizarTabla(); 
+
+        crearNotificacion("Los datos del día se guardaron correctamente.","linear-gradient(to right, #2563EB, #1D4ED8)","#ffffff");
+
     })
     .catch(error => {
         console.error('Error durante siguienteRecord:', error);

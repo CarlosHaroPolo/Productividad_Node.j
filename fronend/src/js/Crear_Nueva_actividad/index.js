@@ -30,9 +30,15 @@ crearNuevoActividad.addEventListener('click', function() {
         // Ahora ejecutar la función que recupera las nuevas actividades y actualiza el select
         activityGet().then(() => {
             console.log("se actualizo lo que quieres");
+            crearNotificacion("Se creó correctamente una nueva actividad.", "#28b463", "#ffffff");
+       
+
+
         }).catch(error => {
             console.error("Error al actualizar las actividades: ", error);
         });
+
+        
     })
     .catch(error => {
         console.error("Error al registrar los datos: ", error);
