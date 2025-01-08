@@ -19,7 +19,7 @@ class Day {
         this.activityArray = newActivityArray;
     }
     // Método para agregar una actividad
-    addActivity(activity) {
+    addActivity(activity) { 
         this.activityArray.push(activity);
     }
     getActivityArray() {
