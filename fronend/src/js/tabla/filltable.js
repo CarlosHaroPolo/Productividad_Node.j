@@ -62,9 +62,12 @@ function appendCeldEspecial(fila, contenido) {
     if(contenido!==''){
         const celda = document.createElement('td');    //btnEditarActivity
 
-        
-        celda.innerHTML = `<div  class="EditarActivity" style="display: flex; align-items: center;">  <p style="margin: 0 5px;">${contenido}</p> <button type="button" class="btn btn-dark">editar</button></div>`
-        ///  quiero ingresar pero del p textconte =contenido
+        celda.innerHTML = `
+  <div class="EditarActivity" style="display: flex; align-items: center;">
+    <p style="margin: 0 5px;">${contenido}</p>
+    <button type="button" class="btn btn-dark" onclick="openModal('modalEditar')">editar</button>
+  </div>
+`;
         fila.appendChild(celda);
     }
    

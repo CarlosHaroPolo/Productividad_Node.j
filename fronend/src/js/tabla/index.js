@@ -9,7 +9,6 @@ function actualizarTabla(){
     obtenerYUsarDatos().then(()=>{
         const idDiaHoy= idDiaActualCurrentWeek();
         const activityArray = currentWeek.days[idDiaHoy].activityArray;
-        console.log(activityArray);
         const divs = document.querySelectorAll(".EditarActivity");
         divs.forEach(div => {
             // Para cada div, seleccionamos el botón dentro de ese div
@@ -20,9 +19,21 @@ function actualizarTabla(){
             // Añadimos un evento de clic al botón
             boton.addEventListener('click', function() {
             // ya tengo el vaor del textP tengo que buscar 
+            // cambiar el nombre 
+            const filteredActivities = activityArray.filter(activity => activity.fk_activity.activity === textoP)[0];
+            console.log(filteredActivities);
 
 
-              alert( `${textoP}---¡Botón presionado!`);
+
+
+            textActidad = document.querySelector(".textActidad");
+            textActidad.textContent= textoP;
+            // editar cantidadHoras
+            textActidad = document.querySelector("#cantidadHoras");
+            textActidad.value= filteredActivities.hour;
+
+
+             // alert( `${textoP}---¡Botón presionado!`);
             });
           });
     
