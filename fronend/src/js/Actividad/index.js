@@ -38,7 +38,7 @@ registrarActividad.addEventListener('click',  function () {
    const dataActivity= currentWeek.days[id].getActivityArray();
     const hasDuplicate = dataActivity.some(element => element.idActivity === idActivity);   
     if (hasDuplicate) {
-        console.log("ELEMENTO DUPLICADO!!!");
+        crearNotificacion("ERROR:ELEMENTO YA REGISTRADO!!.", "red", "black")
     }else{
         registrarDatos('http://localhost:3000/api/ra/', { "idRecord": currentWeek.days[id].id, "idActivity": idActivity, "hour": activityHours })
         .then(response => {
