@@ -30,7 +30,6 @@ crearNuevoActividad.addEventListener('click', async function () {
     }
     registrarDatos('http://localhost:3000/api/activities/', { 'activity': nuevaActividad, 'description': '', 'idType': selectType })
         .then(() => {
-            console.log("registrado!!");
             // Primero elimino las otras opciones 
             const select = document.querySelector(".selectActivity");
             select.innerHTML = '';

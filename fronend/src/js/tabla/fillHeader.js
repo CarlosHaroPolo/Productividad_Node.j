@@ -21,10 +21,13 @@ async function fillHeader() {
     let data = await obtenerDatos('http://127.0.0.1:3000/api/record'); 
     let i=data.length-1 ;  
     let last = data[i];
-   cambiarFecha(mostrarFecha(last.date,0),last.id);
+
     for (let index = 0; index < 7; index++) {
       let flag =index-last.day; 
        modificarTable(1, index,mostrarFecha(last.date,flag));
       actualizarIdCurrentWeek(data,i,index,flag);
     }
+    let idDiaActual = idDiaActualCurrentWeek(); 
+    let text =`${currentWeek.days[idDiaActual].text} : ${mostrarFecha(last.date,0)}`
+   cambiarFecha(text,last.id);
 }

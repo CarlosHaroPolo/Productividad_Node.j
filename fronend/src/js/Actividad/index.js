@@ -42,7 +42,6 @@ registrarActividad.addEventListener('click',  function () {
     }else{
         registrarDatos('http://localhost:3000/api/ra/', { "idRecord": currentWeek.days[id].id, "idActivity": idActivity, "hour": activityHours })
         .then(response => {
-            console.log("REGISTRADO!!");
             console.log(response); // Optional: Log the response from the server
             //limpiar 
             inputHours.value=0;

@@ -60,13 +60,16 @@ function appendCelda(fila, contenido, clase) {
 //ACA SOLO TE ENCARGAS DE LA PARTE ESPECIAL PARA COLOCAR EL NUMERO UN INPUY ademas del texto agregar un  buttron 
 function appendCeldEspecial(fila, contenido) {
     if(contenido!==''){
-        const celda = document.createElement('td');
-        celda.innerHTML = `<p>${contenido}  <button type="button" class="btnEditarActivity btn btn-dark">editar</button></p>`
+        const celda = document.createElement('td');    //btnEditarActivity
+
+        
+        celda.innerHTML = `<div  class="EditarActivity" style="display: flex; align-items: center;">  <p style="margin: 0 5px;">${contenido}</p> <button type="button" class="btn btn-dark">editar</button></div>`
         ///  quiero ingresar pero del p textconte =contenido
         fila.appendChild(celda);
     }
    
 }
+
 
 
 function crearFilaTotales(horasTotales) {
@@ -95,7 +98,7 @@ async function obtenerYUsarDatos() {
         }
     }
     fillFila(semana, maxActivity(data));
-    console.log(semana);
+  
 }
 
 function clearTable() {

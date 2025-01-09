@@ -1,6 +1,7 @@
 class Day {
-    constructor(id, day) {
+    constructor(id,text,day) {
         this.id = id;
+        this.text=text;
         this.day = day;
         this.totalHora = 0;
         this.activityArray = [];
@@ -86,12 +87,12 @@ function idDiaActualCurrentWeek(){
             return index;
         }
     }
-
 }
 
 function cambiarFecha(fecha) {
 
     let fch = document.querySelector(".fechaActual");
+
     fch.textContent = fecha;
 }
 
