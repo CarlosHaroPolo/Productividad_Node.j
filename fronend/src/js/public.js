@@ -39,6 +39,8 @@ class Week {
             new Day(0, "SÁBADO"),
             new Day(0, "DOMINGO")
         ];
+        this.idActivityEditar=0;
+        this.hourActivityEditar=0;
     }
 }
 //inicializar mi currentWeek
