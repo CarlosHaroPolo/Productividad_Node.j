@@ -30,7 +30,7 @@
 
         <!-- Contenedor con scroll horizontal para la tabla -->
         <div class="overflow-x-auto">
-          <table class="t2 table-custom">
+          <table class="t1 table-custom">
             <thead>
               <tr>
                 <th colspan="2">LUNES</th>
@@ -93,6 +93,59 @@
       <!-- Fin Tarjeta Botones -->
     </div>
   </div>
+  <div class="max-w-full mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <!-- Modifica aquí el px-4, sm:px-6 y lg:px-8 a valores menores -->
+
+  <!-- Grid responsive:
+       - En pantallas chicas: 1 columna
+       - En pantallas medianas (md): 3 columnas
+         (usamos md:col-span-2 para la parte del calendario,
+          y md:col-span-1 para la parte de los botones) -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- Tarjeta Calendario (ocupa 2 columnas en md) -->
+    <div class="md:col-span-2 card">
+      <h1 class="text-2xl font-bold text-center mb-4">Horario</h1>
+      <h2 class="text-lg font-semibold text-center mb-3">SEMANA ACTUAL</h2>
+
+      <!-- Contenedor con scroll horizontal para la tabla -->
+      <div class="overflow-x-auto">
+        <table class="t2 table-custom">
+          <thead>
+            <tr>
+              <th colspan="2">LUNES</th>
+              <th colspan="2">MARTES</th>
+              <th colspan="2">MIÉRCOLES</th>
+              <th colspan="2">JUEVES</th>
+              <th colspan="2">VIERNES</th>
+              <th colspan="2">SÁBADO</th>
+              <th colspan="2">DOMINGO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="2">1/01/2025</td>
+              <td colspan="2">2/01/2025</td>
+              <td colspan="2">3/01/2025</td>
+              <td colspan="2">4/01/2025</td>
+              <td colspan="2">5/01/2025</td>
+              <td colspan="2">6/01/2025</td>
+              <td colspan="2">7/01/2025</td>
+            </tr>
+            <!-- Aquí puedes añadir más filas si lo necesitas -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Fin Tarjeta Calendario -->
+
+    <!-- Tarjeta Botones/Fecha Actual (1 columna en md) -->
+    <div class="card">
+     
+    </div>
+    <!-- Fin Tarjeta Botones -->
+  </div>
+</div>
 
   <!-- =========================
        MODALES SIN BOOTSTRAP

@@ -14,7 +14,7 @@ function maxActivity(data) {
     return Math.max(...arreglo);
 }
 function fillFila(semana, maxFila) {
-    const tabla = document.querySelector('.t2 tbody');
+    const tabla = document.querySelector('.t1 tbody');
     let horasTotales = new Array(7).fill(0);
     for (let i = 0; i < maxFila; i++) {
         const fila = crearFilaActividades(semana, horasTotales, i);
@@ -105,7 +105,7 @@ async function obtenerYUsarDatos() {
 }
 
 function clearTable() {
-    var tbody = document.querySelector('.t2 tbody'); //IMPORTANTE 
+    var tbody = document.querySelector('.t1 tbody'); //IMPORTANTE 
     var filas = tbody.querySelectorAll('tr');
     for (var i = filas.length - 1; i > 0; i--) {
         filas[i].remove();
