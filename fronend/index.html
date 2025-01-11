@@ -315,7 +315,11 @@
   // Función para disminuir el valor del input
   function decrement() {
     const input = document.getElementById("cantidadHoras");
-    input.value = parseInt(input.value) - 1;  // Disminuye el valor en 1
+
+    if(input.value!=0){
+      input.value = parseInt(input.value) - 1;  // Disminuye el valor en 1
+
+    }
   }
 
   // Función de cierre del modal (puedes personalizarla según tu implementación)

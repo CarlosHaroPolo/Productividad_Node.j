@@ -26,6 +26,9 @@ class Day {
     getActivityArray() {
         return this.activityArray;
     }
+    limpiarActivity(){
+        this.activityArray = [];
+    }
 
 }
 class Week {

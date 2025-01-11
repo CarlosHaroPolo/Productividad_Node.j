@@ -1,47 +1,41 @@
-
-
-// ejecutar esa tabla 
+// Ejecutar esa tabla
 actualizarTabla();
 
 function actualizarTabla() {
-    fillHeader();     //actualizar la cabecera 
-    clearTable();// limpiar table 
+    fillHeader(); // Actualizar la cabecera
+    clearTable(); // Limpiar tabla
     obtenerYUsarDatos().then(() => {
         const idDiaHoy = idDiaActualCurrentWeek();
         const activityArray = currentWeek.days[idDiaHoy].activityArray;
         const divs = document.querySelectorAll(".EditarActivity");
+
         divs.forEach(div => {
             // Para cada div, seleccionamos el botón dentro de ese div
-            const textoP = div.querySelector('p').textContent;
-
+            const nombreActividad = div.querySelector('p').textContent; // Renombrado a nombreActividad
             const boton = div.querySelector('button.btn.btn-dark');
 
             // Añadimos un evento de clic al botón
             boton.addEventListener('click', function () {
-                // ya tengo el vaor del textP tengo que buscar 
-                // cambiar el nombre 
-                const filteredActivities = activityArray.filter(activity => activity.fk_activity.activity === textoP)[0];                
-                currentWeek.idActivityEditar = filteredActivities.id;
-                currentWeek.hourActivityEditar=filteredActivities.hour;
-                textActidad = document.querySelector(".textActidad");
-                textActidad.textContent = textoP;
-                // editar cantidadHoras
-                textActidad = document.querySelector("#cantidadHoras");
-                textActidad.value = filteredActivities.hour;
+                // Buscar la actividad que coincide con el texto
+                const actividadSeleccionada = activityArray.find(activity => activity.fk_activity.activity === nombreActividad);
 
+                if (actividadSeleccionada) {
+                    currentWeek.idActivityEditar = actividadSeleccionada.id;
+                    currentWeek.hourActivityEditar = actividadSeleccionada.hour;
 
-            })
+                    // Actualizar la interfaz con la actividad seleccionada
+                    let textActividad = document.querySelector(".textActidad");
+                    textActividad.textContent = nombreActividad;
 
-
-
-
-
+                    // Editar cantidadHoras
+                    textActividad = document.querySelector("#cantidadHoras");
+                    textActividad.value = actividadSeleccionada.hour;
+                } else {
+                    console.error("Actividad no encontrada para el texto:", nombreActividad);
+                }
+            });
         });
-
+    }).catch(error => {
+        console.error("Error al obtener y usar los datos:", error);
     });
-
-
 }
-
-
-
