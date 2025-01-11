@@ -48,7 +48,8 @@ class Week {
 }
 //inicializar mi currentWeek
 let currentWeek = new Week();
-
+// inicializar mi pastWeek
+let pastWeek = new Week();
 
 
 async function obtenerDatos(URL) {

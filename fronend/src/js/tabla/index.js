@@ -2,7 +2,7 @@
 actualizarTabla();
 
 function actualizarTabla() {
-    fillHeader(); // Actualizar la cabecera
+    AllfillHeader(); // Actualizar la cabecera
     clearTable(); // Limpiar tabla
     obtenerYUsarDatos().then(() => {
         const idDiaHoy = idDiaActualCurrentWeek();
