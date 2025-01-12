@@ -36,9 +36,12 @@ async function AllfillHeader() {
   // llenar la tabla 2 (ahora me encargo de la segunda tabla 2 )
   i = i - last.day - 1;
   last = data[i];
-  for (let index = 0; index < 7; index++) {
-    let flag = index - last.day;
-    modificarTable("t2", 1, index, mostrarFecha(last.date, flag));
-    actualizarIdWeek(pastWeek,data, i, index, flag);
+  if(last){
+    for (let index = 0; index < 7; index++) {
+      let flag = index - last.day;
+      modificarTable("t2", 1, index, mostrarFecha(last.date, flag));
+      actualizarIdWeek(pastWeek,data, i, index, flag);
+    }
   }
+  
 }

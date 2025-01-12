@@ -25,7 +25,7 @@
 
       <!-- Tarjeta Calendario (ocupa 2 columnas en md) -->
       <div class="md:col-span-2 card">
-        <h1 class="text-2xl font-bold text-center mb-4">Horario</h1>
+        <h1 class="text-2xl font-bold text-center mb-4">Horario de Actividades</h1>
         <h2 class="text-lg font-semibold text-center mb-3">SEMANA ACTUAL</h2>
 
         <!-- Contenedor con scroll horizontal para la tabla -->
@@ -105,8 +105,7 @@
 
     <!-- Tarjeta Calendario (ocupa 2 columnas en md) -->
     <div class="md:col-span-2 card">
-      <h1 class="text-2xl font-bold text-center mb-4">Horario</h1>
-      <h2 class="text-lg font-semibold text-center mb-3">SEMANA ACTUAL</h2>
+      <h2 class="text-lg font-semibold text-center mb-3">SEMANA PASADO</h2>
 
       <!-- Contenedor con scroll horizontal para la tabla -->
       <div class="overflow-x-auto">
@@ -232,6 +231,7 @@
         </button>
         <button 
           class="registrarActividad btn btn-primary"
+          onclick="closeModal('modalRegistrarActividad')" 
         >
           Guardar
         </button>

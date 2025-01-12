@@ -1,11 +1,11 @@
 function contarActivity(data, id) {
     return data.filter(item => item.idRecord == id).length;
 }
-function maxActivity(data) {
+function maxActivity(week,data) {
     let arreglo = [];
     for (let index = 0; index < 7; index++) {
-        if (currentWeek.days[index].id > 0) {
-            id = currentWeek.days[index].id;
+        if (week.days[index].id > 0) {
+            id = week.days[index].id;
             arreglo.push(contarActivity(data, id));
         } else {
             arreglo.push(0);
@@ -13,8 +13,8 @@ function maxActivity(data) {
     }
     return Math.max(...arreglo);
 }
-function fillFila(semana, maxFila) {
-    const tabla = document.querySelector('.t1 tbody');
+function fillFila(week,claseTable,semana, maxFila) {
+    const tabla = document.querySelector(`.${claseTable} tbody`);
     let horasTotales = new Array(7).fill(0);
     for (let i = 0; i < maxFila; i++) {
         const fila = crearFilaActividades(semana, horasTotales, i);
@@ -22,7 +22,7 @@ function fillFila(semana, maxFila) {
     }
     const filaTotales = crearFilaTotales(horasTotales);
     horasTotales.forEach((total, index) => {
-        currentWeek.days[index].setTotalHora(total);
+        week.days[index].setTotalHora(total);
     });
     tabla.appendChild(filaTotales);
 }
@@ -83,35 +83,46 @@ function crearFilaTotales(horasTotales) {
     }
     return fila;
 }
-function llenarColumna(data, index) {
-    if (currentWeek.days[index].id != null) {
-        return data.filter(item => item.idRecord == currentWeek.days[index].id)
+function llenarColumna(week,data, index) {
+    if (week.days[index].id != null) {
+        return data.filter(item => item.idRecord == week.days[index].id)
     }
     return undefined;
 }
-async function obtenerYUsarDatos() {
+async function obtenerYUsarDatos(week,claseTable) {
     let data = await obtenerDatos('http://localhost:3000/api/ra/'); // Aquí se obtiene la información de la API
     let semana = [];// aca se guardar arreglos ose 7 que acada uno por dia 
     for (let index = 0; index < 7; index++) {
-        semana.push(llenarColumna(data, index));
+        semana.push(llenarColumna(week,data, index));
         if (semana[index] != undefined) {
             for (let i = 0; i < semana[index].length; i++) {
-                currentWeek.days[index].addActivity(semana[index][i]);
+                week.days[index].addActivity(semana[index][i]);
             }
         }
     }
-    fillFila(semana, maxActivity(data));
+
+    fillFila(week,claseTable,semana, maxActivity(week,data));
   
 }
 
-function clearTable() {
-    var tbody = document.querySelector('.t1 tbody'); //IMPORTANTE 
+
+
+
+
+
+
+
+
+
+
+function clearTable(week,claseTabla) {
+    var tbody = document.querySelector(`.${claseTabla} tbody`); //IMPORTANTE 
     var filas = tbody.querySelectorAll('tr');
     for (var i = filas.length - 1; i > 0; i--) {
         filas[i].remove();
     }
    for (let index = 0; index < 7; index++) {
-     currentWeek.days[0].limpiarActivity();
+    week.days[0].limpiarActivity();
    
    }
 }

@@ -17,18 +17,18 @@ crearNuevoActividad.addEventListener('click', async function () {
     let selectType = document.querySelector(".selectType");
     let nuevaActividad = document.querySelector(".nuevaActividad");
     console.log(nuevaActividad.value);
-    nuevaActividad = nuevaActividad.value.toString().toUpperCase();
-    selectType = parseInt(selectType.value);
+    textnuevaActividad = nuevaActividad.value.toString().toUpperCase();
+    numberselectType = parseInt(selectType.value);
     // primero vamos a buscar todo las actividades para verificar si es actividad repetida 
     let datas = await obtenerDatos('http://localhost:3000/api/activities/'); // Aquí se obtiene la información de la API
 
-    const result = datas.filter((item) => item.activity === nuevaActividad);
+    const result = datas.filter((item) => item.activity === textnuevaActividad);
     if (result.length != 0) {
         // tienes que colocar la función de Notificacion
         crearNotificacion("ERROR:ELEMENTO ACTIVIDAD DUPLICADO!!.", "red", "white")
         return
     }
-    registrarDatos('http://localhost:3000/api/activities/', { 'activity': nuevaActividad, 'description': '', 'idType': selectType })
+    registrarDatos('http://localhost:3000/api/activities/', { 'activity': textnuevaActividad, 'description': '', 'idType': numberselectType })
         .then(() => {
             // Primero elimino las otras opciones 
             const select = document.querySelector(".selectActivity");
@@ -38,6 +38,7 @@ crearNuevoActividad.addEventListener('click', async function () {
             // Ahora ejecutar la función que recupera las nuevas actividades y actualiza el select
             activityGet().then(() => {
                 console.log("se actualizo lo que quieres");
+                nuevaActividad.value = '';
                 crearNotificacion("Se creó correctamente una nueva actividad.", "#28b463", "#ffffff");
 
 
