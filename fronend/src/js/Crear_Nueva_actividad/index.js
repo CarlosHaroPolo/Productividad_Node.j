@@ -18,7 +18,7 @@ crearNuevoActividad.addEventListener('click', async function () {
     let nuevaActividad = document.querySelector(".nuevaActividad");
     console.log(nuevaActividad.value);
     textnuevaActividad = nuevaActividad.value.toString().toUpperCase();
-    numberselectType = parseInt(selectType.value);
+    let numberselectType = parseFloat(selectType.value);
     // primero vamos a buscar todo las actividades para verificar si es actividad repetida 
     let datas = await obtenerDatos('http://localhost:3000/api/activities/'); // Aquí se obtiene la información de la API
 

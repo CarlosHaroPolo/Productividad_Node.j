@@ -36,11 +36,11 @@ function crearFilaActividades(semana, horasTotales, filaIndex) {
 
         if (semana[dia] && semana[dia][filaIndex]) {
             activity = semana[dia][filaIndex].fk_activity.activity;
-            hora = parseInt(semana[dia][filaIndex].hour, 10);
+            hora = parseFloat(semana[dia][filaIndex].hour, 10);
             horasTotales[dia] += hora;
         }
         if (dia == idDiaHoy  ) {
-            console.log("ERES ESPECIAL");
+          
             appendCelda(fila, hora, "currentActivity");
             appendCeldEspecial(fila, activity);
         } else {
@@ -93,6 +93,7 @@ function llenarColumna(week,data, index) {
 async function obtenerYUsarDatos(week,claseTable) {
     let data = await obtenerDatos('http://localhost:3000/api/ra/'); // Aquí se obtiene la información de la API
     let semana = [];// aca se guardar arreglos ose 7 que acada uno por dia 
+  
     for (let index = 0; index < 7; index++) {
         semana.push(llenarColumna(week,data, index));
         if (semana[index] != undefined) {

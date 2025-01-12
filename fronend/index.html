@@ -89,6 +89,25 @@
         >
           Crear Nueva Actividad
         </button>
+        <div class="card">
+          <h3 class="text-xl font-semibold  text-center">
+            Lista de Tareas
+          </h3>
+          <div class="flex flex-col items-center p-5 w-full">
+            <label for="checkbox1" class="flex items-center cursor-pointer w-full">
+                <input id="checkbox1" type="checkbox"
+                    class="rounded text-blue-500 focus:ring-blue-400 focus:ring-opacity-25 border border-gray-300 shadow-sm" />
+                <span class="ml-2 text-sm text-gray-700">Aceptar términos y condiciones</span>
+            </label>
+            <label for="checkbox2" class="flex items-center cursor-pointer w-full mt-4">
+                <input id="checkbox2" type="checkbox"
+                    class="rounded text-blue-500 focus:ring-blue-400 focus:ring-opacity-25 border border-gray-300 shadow-sm" />
+                <span class="ml-2 text-sm text-gray-700">Aceptar términos y condiciones</span>
+            </label>
+        </div>
+        </div> 
+     
+
       </div>
       <!-- Fin Tarjeta Botones -->
     </div>
@@ -224,6 +243,7 @@
           type="number" 
           class="HoursActivity w-full border border-gray-300 rounded p-2" 
           value="0" 
+          step="0.5"
           min="0"
         />
       </div>
@@ -318,7 +338,7 @@
           <button class="px-4 py-2 bg-red-500 text-white rounded-l hover:bg-red-600" onclick="decrement()">-</button>
 
           <!-- Input centrado -->
-          <input id="cantidadHoras" type="number" class="px-4 py-2 w-20 text-center border-2 border-gray-300 rounded-none" value="0" />
+          <input id="cantidadHoras"  type="number"  step="0.5" class="px-4 py-2 w-20 text-center border-2 border-gray-300 rounded-none" value="0" />
 
           <!-- Botón de "+" en azul -->
           <button class="px-4 py-2 bg-blue-500 text-white rounded-r hover:bg-blue-600" onclick="increment()">+</button>

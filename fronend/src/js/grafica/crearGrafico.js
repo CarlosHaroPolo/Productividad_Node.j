@@ -43,8 +43,7 @@ function actualizarDatosGrafico(currentWeek, pastWeek) {
         arregloCurrentWeek.push(currentWeek.days[index].totalHora);
         arregloPastWeek.push(pastWeek.days[index].totalHora);
     }
-    console.log(arregloCurrentWeek);
-    console.log(arregloPastWeek);
+  
     // Actualizar datos si el gráfico ya existe
     if (myChart) {
         myChart.data.datasets[0].data = arregloPastWeek;

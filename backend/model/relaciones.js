@@ -2,7 +2,7 @@ const recordModel = require('./recordModel');
 const r_aModel = require('./r_aModel');
 const activityModel = require('./activityModel');
 const typeModel = require('./typeModel');
-
+const taskModel =  require('./taskModel');
 // Relaciones
 activityModel.belongsTo(typeModel, { foreignKey: 'idType', as: 'fk_type' });
 
@@ -18,5 +18,6 @@ module.exports = {
     recordModel,
     r_aModel,
     activityModel,
-    typeModel
+    typeModel,
+    taskModel
 };

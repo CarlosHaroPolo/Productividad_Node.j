@@ -36,6 +36,13 @@ CREATE TABLE `types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `tasks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task` varchar(80) NOT NULL,
+`status`  int(11) DEFAULT NULL ,
+  PRIMARY KEY(`id`)
+) 
+
 ALTER TABLE `activities`
   ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`idType`) REFERENCES `types` (`id`);
 

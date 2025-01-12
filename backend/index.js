@@ -15,12 +15,14 @@ const typeRoutes = require('./routes/typeRoute');
 const activityRoutes = require('./routes/activityRoute');
 const recordRoutes = require('./routes/recordRoute');
 const r_aRoute = require('./routes/r_aRoute');
+const taskRoute= require('./routes/taskRoute');
 
 // Usar rutas
 app.use('/api/types', typeRoutes);
 app.use('/api/activities', activityRoutes);
 app.use('/api/record', recordRoutes);
 app.use('/api/ra', r_aRoute);
+app.use('/api/task', taskRoute);
 
 
 // agregar los recursos estaticos 
