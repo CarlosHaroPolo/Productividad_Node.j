@@ -5,6 +5,7 @@ function actualizarTabla() {
     AllfillHeader(); // Actualizar todas las cabeceras
     clearTable(currentWeek,"t1"); // Limpiar tabla
     clearTable(pastWeek,"t2"); // Limpiar tabla
+
     obtenerYUsarDatos(currentWeek,"t1").then(() => {
         const idDiaHoy = idDiaActualCurrentWeek();
         const activityArray = currentWeek.days[idDiaHoy].activityArray;
@@ -40,6 +41,6 @@ function actualizarTabla() {
         console.error("Error al obtener y usar los datos:", error);
     });
 
-    obtenerYUsarDatos(pastWeek,"t2");
+    obtenerYUsarDatos(pastWeek,"t2").then(()=>{  actualizarDatosGrafico(currentWeek, pastWeek)});
     
 }

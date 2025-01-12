@@ -54,4 +54,4 @@ INSERT INTO types (type, description) VALUES
 ('TESIS', 'Trabajo de investigación que puede incluir desarrollo teórico.'),
 ('DESARROLLO PERSONAL', 'Acciones encaminadas a mejorar las oportunidades laborales y profesional.');
 
-INSERT INTO records(totalHours, date, state, day) VALUES ( '0', '2024-12-31', '0', '0');
+INSERT INTO records(totalHours, date, state, day) VALUES ( '0', '2024-12-30', '0', '0');

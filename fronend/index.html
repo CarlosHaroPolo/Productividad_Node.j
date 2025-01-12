@@ -140,11 +140,17 @@
 
     <!-- Tarjeta Botones/Fecha Actual (1 columna en md) -->
     <div class="card">
-     
+      <h3 class="text-xl font-semibold mb-4 text-center">
+        Gráfica de la semana actual vs la semana pasada
+      </h3>
+      <canvas id="myChart" width="400" height="200"></canvas>
+
     </div>
     <!-- Fin Tarjeta Botones -->
   </div>
 </div>
+
+
 
   <!-- =========================
        MODALES SIN BOOTSTRAP
@@ -337,6 +343,8 @@
 </div>
 
   <!-- Scripts de tu proyecto -->
+  <script src="src/js/grafica/crearGrafico.js"></script>
+
   <script src="src/js/public.js"></script>
   <script src="src/js/tabla/fillHeader.js"></script>
   <script src="src/js/tabla/filltable.js"></script>
@@ -345,9 +353,11 @@
   <script src="src/js/Actividad/index.js"></script>
   <script src="src/js/Crear_Nueva_actividad/index.js"></script>
 <script src="src/js/editar/index.js"></script>
+
+
   <!--libreria -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Funciones para abrir/cerrar modales -->
   <script>
     function openModal(modalId) {
@@ -380,5 +390,13 @@
     document.getElementById(modalId).classList.add("hidden");
   }
 </script>
+
+<script>
+  crearGrafico();
+</script>
+
+
+
+
 </body>
 </html>

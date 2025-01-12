@@ -59,8 +59,9 @@ function appendCelda(fila, contenido, clase) {
 
 //ACA SOLO TE ENCARGAS DE LA PARTE ESPECIAL PARA COLOCAR EL NUMERO UN INPUY ademas del texto agregar un  buttron 
 function appendCeldEspecial(fila, contenido) {
+    const celda = document.createElement('td');    //btnEditarActivity}
     if(contenido!==''){
-        const celda = document.createElement('td');    //btnEditarActivity
+   
 
         celda.innerHTML = `
   <div class="EditarActivity" style="display: flex; align-items: center;">
@@ -68,9 +69,9 @@ function appendCeldEspecial(fila, contenido) {
     <button type="button" class="btn btn-dark" onclick="openModal('modalEditar')">editar</button>
   </div>
 `;
-        fila.appendChild(celda);
+      
     }
-   
+    fila.appendChild(celda);
 }
 
 
